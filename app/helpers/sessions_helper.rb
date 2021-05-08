@@ -4,8 +4,16 @@ module SessionsHelper
     session[:user_id] = user.id
   end
   
+  def instructors_log_in(instructor)
+    session[:instructor_id] = instructor.id
+  end
+  
   def current_user?(user)
     user == current_user
+  end
+  
+  def current_instructor?(instructor)
+    instructor == current_instructor
   end
 
   def current_user
@@ -13,15 +21,30 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     end
   end
+  
+  def current_instructor
+    if (instructor_id = session[:instructor_id])
+      @current_instructor ||= Instructor.find_by(id: instructor_id)
+    end
+  end
 
   def logged_in?
     !current_user.nil?
+  end
+  
+  def instructors_logged_in?
+    !current_instructor.nil?
   end
 
    # 現在のユーザーをログアウトする
   def log_out
     session.delete(:user_id)
     @current_user = nil
+  end
+  
+  def instructors_log_out
+    session.delete(:instructor_id)
+    @current_instructor = nil
   end
   
   # 記憶したURL (もしくはデフォルト値) にリダイレクト

@@ -24,16 +24,17 @@ class InstructorsController < ApplicationController
 
   # POST /users
   def create
-    @instructor = Instructor.new(user_params)
+    @instructor = Instructor.new(instructor_params)
     if @instructor.save # => Validation
       # Sucess
-      log_in @instructor
-      flash[:success] = "Welcome to the Sample App!"
+      instructors_log_in @instructor
+      flash[:info] = "登録完了"
       redirect_to @instructor
       # GET "/users/#{@user.id}" => show
     else
       # Failure
       render 'new'
+      flash[:info] = "登録失敗"
     end
   end
 
@@ -75,7 +76,7 @@ class InstructorsController < ApplicationController
 
     # ログイン済みユーザーかどうか確認
     def logged_in_instructor
-      unless logged_in?
+      unless instructors_logged_in?
         store_location
         flash[:danger] = "Please log in."
         redirect_to login_url

@@ -1,10 +1,15 @@
 class StaticPagesController < ApplicationController
+  
   def home
-    # app/views/リソース名/アクション名.html.erb
-    # app/views/static_pages/home.html.erb
+    # @instructors = Instructor.paginate(page: params[:page])
+    # @instructors = Instructor
+    # # # @chatroom = Chatroom.new
+    # @users = []
+    # if current_instructor
+    #   rooms = current_instructor.chatrooms
+    #   rooms.each do |room|
+    #     @users << room.user
+    #   end
+    # end
   end
-
-  
-
-  
 end

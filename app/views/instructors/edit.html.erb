@@ -1,18 +1,23 @@
-<h1>インストラクター専用新規登録</h1>
+<% provide(:title, "Edit instructor") %>
+<h1>Update your profile</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@instructor) do |f| %>
       <%= render 'shared/instructor_error_messages' %>
-      <%= f.label :名前 %>
+      <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
-      <%= f.label :メールアドレス %>
+      <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
-      <%= f.label :パスワード %>
+      <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-      <%= f.label :password_confirmation, "確認用パスワード" %>
+      <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-      <%= f.submit "アカウント作成", class: "btn btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
+
+    <div class="gravatar_edit">
+      
+    </div>
   </div>
 </div>

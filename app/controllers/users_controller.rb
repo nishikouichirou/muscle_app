@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     else
       # Failure
       render 'new'
+      flash[:info] = "登録失敗"
     end
   end
 
