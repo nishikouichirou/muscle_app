@@ -1,0 +1,27 @@
+<%= form_for(@message, url: {controller: 'chatrooms', action: 'create_message' }) do |f| %>
+    <%= hidden_field_tag :chatroom_id, @chatroom_id %>
+    <% if current_user %>
+        <%= hidden_field_tag :sender_name, current_user.name %>
+    <% elsif current_instructor %>
+        <%= hidden_field_tag :sender_name, current_instructor.name %>
+    <% end %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+<% end %>
+
+
+<% @messages.each do |message| %>
+    <div class="member_message_box">
+        <div class="msg_box">
+          <div class="msg_head">
+              <div class="name">
+                  <a href="#"><%= message.sender_name%></a>
+              </div>
+              <div class="date"><%= message.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+          </div>
+          <div class="msg_body">
+              <p><%= message.content%></p>
+          </div>
+      </div>
+    </div>
+<% end %>

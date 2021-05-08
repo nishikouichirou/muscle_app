@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'chatrooms/new'
+
   root 'static_pages#home'
   
   get  '/signup',  to: 'users#new'

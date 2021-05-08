@@ -1,3 +1,36 @@
-
+<% if logged_in? %>
+  <ul class="instructors">
+    <% @instructors.each do |instructor| %>
+      <li>
+        <%= gravatar_for instructor, size: 50 %>
+        <%= link_to instructor.name, instructor %>
+            <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+              <%= hidden_field_tag :instructor_id, instructor.id %>
+              <%= f.submit "チャットをする" %>
+            <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% elsif instructors_logged_in? %>
+　<ul class="instructors">
+　  <% @users.each do |user| %>
+      <li>
+        <%= gravatar_for user, size: 50 %>
+        <%= link_to user.name, user %>
+        <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
+          <%= hidden_field_tag :user_id, user.id %>
+          <%= hidden_field_tag :instructor_id, current_instructor.id %>
+          <%= f.submit "チャットをする" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="text-box">
+    <h1 class="home_title">お好みのインストラクターと一緒に<br>身体を鍛えよう！！</h1>
+    <p class="home_description">まずは登録からしてね♪</p>
+</div>
+<% end %>
 
 
