@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210507090822) do
+ActiveRecord::Schema.define(version: 20210508064239) do
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "instructor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "instructors", force: :cascade do |t|
     t.string "name"
@@ -19,6 +26,14 @@ ActiveRecord::Schema.define(version: 20210507090822) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.index ["email"], name: "index_instructors_on_email", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "chatroom_id"
+    t.text "content"
+    t.string "sender_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

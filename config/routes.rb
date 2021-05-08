@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   
   resources :users
   resources :instructors
+  resources :chatrooms, only: [:show] do
+    collection do
+      post :create_room
+      post :create_message
+    end
+  end
 end

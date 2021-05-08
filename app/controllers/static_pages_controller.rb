@@ -1,8 +1,9 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @instructors = Instructor.paginate(page: params[:page])
-    @instructors = Instructor
+    # @instructors = Instructor.paginate(page: params[:page])
+    # @instructors = Instructor
+    @instructors = Instructor.all
     @chatroom = Chatroom.new
     @users = []
     if current_instructor
