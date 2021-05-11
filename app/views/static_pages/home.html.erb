@@ -2,7 +2,9 @@
   <ul class="instructors">
     <% @instructors.each do |instructor| %>
       <li>
-        <%= gravatar_for instructor, size: 50 %>
+        <% if instructor.image? %>                                                              
+          <%= image_tag instructor.image.thumb.url %>
+        <% end %>
         <%= link_to instructor.name, instructor %>
             <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
               <%= hidden_field_tag :user_id, current_user.id %>
@@ -16,7 +18,9 @@
 　<ul class="instructors">
 　  <% @users.each do |user| %>
       <li>
-        <%= gravatar_for user, size: 50 %>
+        <% if user.image? %>                                                              
+          <%= image_tag user.image.thumb.url %>
+        <% end %>
         <%= link_to user.name, user %>
         <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
           <%= hidden_field_tag :user_id, user.id %>

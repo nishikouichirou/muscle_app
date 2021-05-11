@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: { minimum: 6 }, allow_nil: true
     
+  mount_uploader :image, ImageUploader
+    
   has_many :chatrooms
 
   def User.digest(string)
