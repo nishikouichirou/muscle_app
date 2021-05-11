@@ -71,7 +71,7 @@ class InstructorsController < ApplicationController
     def instructor_params
       params.require(:instructor).permit(
         :name, :email, :password,
-        :password_confirmation,:image)
+        :password_confirmation,:img)
     end
 
     # ログイン済みユーザーかどうか確認
