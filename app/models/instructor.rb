@@ -8,7 +8,7 @@ class Instructor < ApplicationRecord
   validates :password, presence: true,
     length: { minimum: 6 }, allow_nil: true
   
-  mount_uploader :img, ImgUploader
+  mount_uploader :img, InstructorImgUploader
     
   has_many :chatrooms
     
