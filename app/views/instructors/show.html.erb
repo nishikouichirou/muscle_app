@@ -4,7 +4,7 @@
     <section class="user_info">
       <h1>
         <% if @instructor.img? %>                                                              
-        <%= image_tag @instructor.img.thumb.url %>
+        <%= image_tag @instructor.img.url %>
         <% end %>
         <%= @instructor.name %>
       </h1>
