@@ -1,7 +1,7 @@
 class ImgUploader < CarrierWave::Uploader::Base  
 
   # リサイズしたり画像形式を変更するのに必要
-  include CarrierWave::RMagick
+#   include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   
   if Rails.env.development?
@@ -17,7 +17,7 @@ class ImgUploader < CarrierWave::Uploader::Base
   end
 
   # 画像の上限を640x480にする
-  # process :resize_to_limit => [640, 480]
+   process :resize_to_limit => [640, 480]
   
   # 保存形式をJPGにする
   process :convert => 'jpg'

@@ -1,7 +1,7 @@
 class InstructorImgUploader < CarrierWave::Uploader::Base  
 
   # リサイズしたり画像形式を変更するのに必要
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   
   if Rails.env.development?
     storage :file

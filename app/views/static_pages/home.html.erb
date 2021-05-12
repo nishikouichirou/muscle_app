@@ -3,7 +3,7 @@
     <% @instructors.each do |instructor| %>
       <li>
         <% if instructor.img? %>                                                              
-          <%= image_tag instructor.img.thumb100.url %>
+          <%= image_tag instructor.img.thumb.url %>
         <% end %>
         <%= link_to instructor.name, instructor %>
             <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
@@ -19,7 +19,7 @@
 　  <% @users.each do |user| %>
       <li>
         <% if user.img? %>                                                              
-          <%= image_tag user.img.thumb100.url %>
+          <%= image_tag user.img.thumb.url %>
         <% end %>
         <%= link_to user.name, user %>
         <%= form_for(@chatroom, url: {controller: 'chatrooms', action: 'create_room' }) do |f| %>
