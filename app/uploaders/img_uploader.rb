@@ -16,22 +16,25 @@ class ImgUploader < CarrierWave::Uploader::Base
   end
 
   # 画像の上限を640x480にする
-  process :resize_to_limit => [640, 480]
-
+  # process :resize_to_limit => [640, 480]
+  process :resize_to_fill => [640, 480]
   # 保存形式をJPGにする
   process :convert => 'jpg'
 
   # サムネイルを生成する設定
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    # process :resize_to_limit => [300, 300]
+    process :resize_to_fill => [300, 300]
   end
 
   version :thumb100 do
-    process :resize_to_limit => [100, 100]
+    # process :resize_to_limit => [100, 100]
+    process :resize_to_fill => [100, 100]
   end
 
   version :thumb30 do
-    process :resize_to_limit => [30, 30]
+    # process :resize_to_limit => [30, 30]
+    process :resize_to_fill => [30, 30]
   end
   
   
